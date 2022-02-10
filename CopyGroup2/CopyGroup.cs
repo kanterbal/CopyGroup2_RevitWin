@@ -37,7 +37,8 @@ namespace CopyGroup2
 
                 Transaction transaction = new Transaction(doc);
                 transaction.Start("Копирование группы элементов");
-                doc.Create.PlaceGroup(pointRez, group.GroupType);
+                var group1 = doc.Create.PlaceGroup(pointRez, group.GroupType);
+                group1.get_Parameter(BuiltInParameter.GROUP_OFFSET_FROM_LEVEL).Set(0);
                 transaction.Commit();
             }
             catch (Autodesk.Revit.Exceptions.OperationCanceledException)
